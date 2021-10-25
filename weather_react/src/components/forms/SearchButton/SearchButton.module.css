@@ -1,0 +1,10 @@
+.SearchButton {
+  width: 56px;
+  height: 56px;
+  margin-left: 15px;
+}
+
+.SearchButton .SearchButton__element {
+  width: 100%;
+  height: 100%;
+}
