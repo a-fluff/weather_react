@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import {useSelector} from 'react-redux';
 import SearchInput from '../SearchInput';
 import SearchButton from '../SearchButton';
+import Navigation from '../Navigation';
 import classes from './SearchWrapper.module.css';
+import request from '../../../services/request.service';
 import store from '../../../store/store';
 
 function SearchWrapper() {
-  const [city, setCity] = useState('');
+  const city = useSelector((state) => state.city)
 
   useEffect(() => {
     let urlParams = new URLSearchParams(window.location.search);
@@ -14,24 +16,28 @@ function SearchWrapper() {
 
     if(queryCity) {
       setCityInput(queryCity)
-      getWeatherCity(queryCity)
+      request.getWeatherFromCity(queryCity)
     }
   }, [])
 
   function setCityInput(val) {
-    setCity(val);
+    store.dispatch({ type: 'SET_CITY', value: val })
   }
 
-  function getWeatherCity(searchCity) {
-    // const requestCity = searchCity ? searchCity : city;
+  function getLocationUser() {
+    if(navigator) {
+      navigator.geolocation.getCurrentPosition((position) => { 
 
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`)
-    .then((data) => {
-      store.dispatch({type: 'SET_SINGLE_WEATHER', value: data.data})
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+        const coords = {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude
+        }
+
+        request.getWeatherFromCoords(coords)
+      });
+    } else {
+      console.log('Error navigator');
+    }
   }
 
 
@@ -42,8 +48,10 @@ function SearchWrapper() {
         changeCity={setCityInput}
       />
 
+      <Navigation getLocation={getLocationUser}/>
+
       <SearchButton
-        onSubmit={getWeatherCity}
+        onSubmit={() => {request.getWeatherFromCity(city)}}
       />
     </div>
   )
