@@ -1,0 +1,14 @@
+.SingleWeather {
+}
+.SingleWeather__card {
+  max-width: 310.5px;
+  margin: 0 auto;
+}
+.SingleWeather__params {
+
+}
+.SingleWeather__param {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}

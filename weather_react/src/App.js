@@ -1,11 +1,13 @@
+import { Provider } from 'react-redux';
+import store from './store/store';
 import './App.css';
-import SingleWeather from './components/forms/SingleWeather';
+import SingleWeather from './components/SingleWeather';
 
 function App() {
   return (
-    <div className="App">
+    <Provider store={store} className="App">
       <SingleWeather/>
-    </div>
+    </Provider>
   );
 }
 
