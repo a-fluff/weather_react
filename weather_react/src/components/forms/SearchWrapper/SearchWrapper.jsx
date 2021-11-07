@@ -6,6 +6,7 @@ import Navigation from '../Navigation';
 import classes from './SearchWrapper.module.css';
 import request from '../../../services/request.service';
 import store from '../../../store/store';
+import storage from '../../../services/storage.service';
 
 function SearchWrapper() {
   const city = useSelector((state) => state.city)
@@ -16,7 +17,14 @@ function SearchWrapper() {
 
     if(queryCity) {
       setCityInput(queryCity)
+
+      storage.setCityStorage(queryCity)
       request.getWeatherFromCity(queryCity)
+    } else {
+      const cityStorage = storage.getCityStorage()
+
+      setCityInput(cityStorage)
+      request.getWeatherFromCity(cityStorage)
     }
   }, [])
 

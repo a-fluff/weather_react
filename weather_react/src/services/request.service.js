@@ -2,6 +2,7 @@ import store from '../store/store';
 import axios from 'axios';
 import {createBrowserHistory} from 'history';
 import query from './query.service';
+import storage from'./storage.service';
 
 let history = createBrowserHistory();
 
@@ -16,6 +17,7 @@ function getSingleWeather(params) {
     store.dispatch({type: 'SET_SINGLE_WEATHER', value: data.data});
     store.dispatch({type: 'SET_CITY', value: data.data.name});
 
+    storage.setCityStorage(data.data.name);
     history.push('?' + query('city', data.data.name));
   })
   .catch((err) => {
@@ -34,5 +36,12 @@ function getWeatherFromCoords({lat, lon}) {
 
   getSingleWeather(param);
 }
+
+// function getRandomImage(){
+//   axios.get('')
+//   .then(data => {
+//     console.log(data);
+//   })
+// }
 
 export default request
