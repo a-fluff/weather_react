@@ -1,0 +1,7 @@
+.TextField__input {
+  display: flex;
+  flex-grow: 2;
+}
+.TextField__input[value] {
+  font-size: 5px;
+}

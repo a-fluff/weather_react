@@ -11,9 +11,11 @@ const request = {
   getWeatherFromCoords
 }
 
-function getSingleWeather(params) {
-  axios.get(`http://api.openweathermap.org/data/2.5/weather${params}&appid=${process.env.REACT_APP_API_KEY}`)
+function getSingleWeather(params, lang) {
+  axios.get(`http://api.openweathermap.org/data/2.5/weather${params}&lang=${lang}&appid=${process.env.REACT_APP_API_KEY}`)
   .then((data) => {
+        // !
+        console.log(data.data.weather[0].main, data.data.sys.country, data.data)
     store.dispatch({type: 'SET_SINGLE_WEATHER', value: data.data});
     store.dispatch({type: 'SET_CITY', value: data.data.name});
 
@@ -36,12 +38,5 @@ function getWeatherFromCoords({lat, lon}) {
 
   getSingleWeather(param);
 }
-
-// function getRandomImage(){
-//   axios.get('')
-//   .then(data => {
-//     console.log(data);
-//   })
-// }
 
 export default request

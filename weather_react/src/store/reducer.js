@@ -4,6 +4,7 @@ function reducer(state, action) {
     case 'SET_LANG': return {...state, location: action.value}
     case 'SET_CITY': return {...state, city: action.value}
     case 'SET_DEG': return {...state, deg: action.value}
+    case 'SET_WEATHER' : return {...state, weather: action.value}
     default: return state
   }
 }

@@ -1,0 +1,10 @@
+.Navigation {
+  margin-left: 25px;
+}
+.Navigation_icon {
+  width: 65px;
+  height: 65px;
+  background-image: url('../../assets/icons/location.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

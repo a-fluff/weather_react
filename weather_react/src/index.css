@@ -7,8 +7,11 @@
 #root {
   min-height: 100vh;
   background-color: rgba(255, 255, 255, 0.6);
-} 
+}
 
+.MuiOutlinedInput-root {
+  border-radius: 28px !important;
+}
 img {
   max-width: 100%;
 }

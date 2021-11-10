@@ -1,14 +1,94 @@
-.SingleWeather {
+.SingleWeather__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 60px 0px 40px;
+}
+.SingleWeather__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.SingleWeather__city {
+  margin-bottom: 10px;
 }
 .SingleWeather__card {
-  max-width: 310.5px;
+  max-width: 60vw;
   margin: 0 auto;
-}
-.SingleWeather__params {
-
-}
-.SingleWeather__param {
-  list-style-type: none;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.SingleWeather__content {
+  display: flex;
+  align-items: center;
+}
+@media screen and (min-width: 1400px) {
+  .SingleWeather__content:first-child {
+    margin-right: 50px;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .SingleWeather__card {
+    flex-direction: column;
+  }
+  .SingleWeather__section {
+    min-width: 200px;
+    margin-bottom: 50px;
+  }
+  .SingleWeather__params {
+    flex-wrap: wrap;
+    justify-content: center !important;
+  }
+}
+.SingleWeather__content:last-child {
+  flex-grow: 2;
+}
+.SingleWeather__img {
+  width: 250px;
+}
+.SingleWeather__description {
+  min-width: 95px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+}
+.SingleWeather__temp {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.SingleWeather__weather {
+  font-size: 20px;
+}
+.SingleWeather__section {
+  /* min-height: 120px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+.SingleWeather__params {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.SingleWeather__params span {
+  word-wrap: break-word;
+}
+.SingleWeather__param {
+  /* flex: 1 1; */
+  /* border: 1px solid black; */
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.SingleWeather__param:nth-child(odd) {
+  margin-bottom: 30px;
 }
